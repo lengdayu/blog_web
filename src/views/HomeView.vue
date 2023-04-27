@@ -3,7 +3,8 @@
     <Header></Header>
     <div class="body">
       <div class="print_meesage">
-        <h2>{{ message }}</h2>
+        <span>{{ message }}</span>
+        <span class="cursor">|</span>
       </div>
     </div>
   </div>
@@ -21,15 +22,31 @@ const message = usePirntMessage(
 .container {
   width: 100%;
   background-image: url('@/assets/banner/1.jpg');
-  background-position-y: center right;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   .body {
-    min-height: 689px;
+    height: calc(100vh - @header-height);
+    padding-left: 63px;
+    padding-top: 10px;
     .print_meesage {
-      color: #fff;
+      color: @font-color;
+      .cursor {
+        padding-left: 4px;
+        animation: blink 1s infinite;
+      }
     }
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>

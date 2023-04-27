@@ -10,5 +10,13 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        // 定义全局变量
+        additionalData: `@import "@/assets/css/common.less";`
+      }
+    }
   }
 })

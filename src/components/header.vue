@@ -28,7 +28,7 @@ const iconPngArray: iconItem[] = [
 <style lang="less" scoped>
 .top {
   width: 50%;
-  height: 84px;
+  height: @header-height;
   color: #fff;
   display: flex;
   flex: 1;
@@ -58,6 +58,7 @@ const iconPngArray: iconItem[] = [
     text-align: center;
     line-height: 44px;
     font-size: 30px;
+    color: @font-color;
   }
 }
 </style>

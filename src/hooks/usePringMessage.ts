@@ -18,7 +18,6 @@ const splitMessage = (message: string): string => {
       finallMessage += totalMessageArray[index]
     }
   })
-  console.log(finallMessage)
   return finallMessage
 }
 /**

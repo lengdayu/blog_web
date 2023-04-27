@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "pinyin": "^3.0.0-alpha.5",
+    "style-resources-loader": "^1.5.0",
     "uninstall": "^0.0.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
