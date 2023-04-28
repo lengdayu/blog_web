@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <Header></Header>
+    <div class="header">
+      <Header></Header>
+    </div>
     <div class="body">
       <div class="print_meesage">
-        <span>{{ message }}</span>
+        <span class="text">{{ message }}</span>
         <span class="cursor">|</span>
       </div>
     </div>
@@ -25,12 +27,27 @@ const message = usePirntMessage(
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  .header {
+    position: fixed;
+    width: 100%;
+    background-color: #272727;
+    z-index: 9999; /* 设置更高的层级 */
+  }
   .body {
-    height: calc(100vh - @header-height);
-    padding-left: 63px;
-    padding-top: 10px;
+    position: relative;
+    top: 10px + @header-height;
+    left: 63px;
+    height: 100vh;
+    z-index: 1;
     .print_meesage {
-      color: @font-color;
+      & > .text {
+        color: @font-color;
+        font-size: 30px;
+        background: linear-gradient(to right, #ffffff 0%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
       .cursor {
         padding-left: 4px;
         animation: blink 1s infinite;

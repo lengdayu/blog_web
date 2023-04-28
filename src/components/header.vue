@@ -27,7 +27,7 @@ const iconPngArray: iconItem[] = [
 </script>
 <style lang="less" scoped>
 .top {
-  width: 50%;
+  width: 100%;
   height: @header-height;
   color: #fff;
   display: flex;
@@ -41,7 +41,7 @@ const iconPngArray: iconItem[] = [
       margin: 20px auto;
       height: 44px;
       cursor: pointer;
-      background-color: #3d3c3c;
+      background-color: #fff;
       border-radius: 2px;
       img {
         width: 44px;
