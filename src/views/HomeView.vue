@@ -8,12 +8,15 @@
         <span class="text">{{ message }}</span>
         <span class="cursor">|</span>
       </div>
+      <Recommend class="recommend"></Recommend>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Header from '@/components/header.vue'
+import Recommend from '@/components/recommend.vue'
+
 import { usePirntMessage } from '@/hooks/usePringMessage'
 const message = usePirntMessage(
   '就让他带走你的那瞬间，成为我们的纪念，谁能发现我的世界，曾经有过你的脸。',
@@ -23,26 +26,20 @@ const message = usePirntMessage(
 <style lang="less" scoped>
 .container {
   width: 100%;
-  background-image: url('@/assets/banner/1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   .header {
-    position: fixed;
     width: 100%;
-    background-color: #272727;
-    z-index: 9999; /* 设置更高的层级 */
   }
   .body {
-    position: relative;
-    top: 10px + @header-height;
-    left: 63px;
-    height: 100vh;
-    z-index: 1;
+    min-height: calc(100vh - @header-height);
+    margin-left: 64px;
+
+    .recommend {
+      margin-top: 10px;
+    }
     .print_meesage {
+      color: @font-color;
+      font-size: 30px;
       & > .text {
-        color: @font-color;
-        font-size: 30px;
         background: linear-gradient(to right, #ffffff 0%, #ffffff 50%, #f5f5f5 50%, #f5f5f5 100%);
         background-clip: text;
         -webkit-background-clip: text;
