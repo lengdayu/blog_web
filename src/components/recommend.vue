@@ -2,15 +2,24 @@
   <div class="recommend">
     <h1 class="recommend_title">
       <n-divider title-placement="left">置顶文章</n-divider>
-      <n-card :title="item.title" hoverable v-for="(item, index) in articles" :key="index">
-        {{ item.path }}
-      </n-card>
     </h1>
+    <n-card
+      class="n_card"
+      hoverable
+      :title="item.title"
+      v-for="(item, index) in articles"
+      :key="index"
+    >
+      <span>发布时间：{{ item.created_at }}</span>
+      <span>最后更新时间：{{ item.updated_at }}</span>
+      <br />
+      {{ item.path }}
+    </n-card>
   </div>
 </template>
 <script lang="ts" setup>
 import { NDivider, NCard } from 'naive-ui'
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { GetAllArticles } from '@/utils/api/index'
 interface articleInfo {
   id: number
@@ -24,12 +33,12 @@ interface articleInfo {
   label?: string
 }
 
-let articles: articleInfo[] = []
+let articles = ref<articleInfo[]>([])
 onBeforeMount(async () => {
   let res = await GetAllArticles({ pageCount: 1, pageSize: 20 })
   if (res.data.code === '00000') {
-    let articleInfos: articleInfo[] = res.data.data
-    articles = articleInfos
+    let articleInfos = res.data.data
+    articles.value = articleInfos
     console.log(articles)
   }
 })
@@ -40,11 +49,17 @@ onBeforeMount(async () => {
   height: 900px;
   padding-left: 10px;
   padding-top: 10px;
-  background-color: #fff;
+  background-color: @back-color;
   .recommend_title {
     :deep(.n-divider) {
       color: @font-color;
     }
+    width: 90%;
+  }
+  .n_card {
+    width: 85%;
+    margin-top: 5px;
+    background: @card-back-color;
   }
 }
 </style>
