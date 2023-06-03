@@ -9,6 +9,7 @@
       :title="item.title"
       v-for="(item, index) in articles"
       :key="index"
+      @click="getContent(item.id)"
     >
       <span>发布时间：{{ item.created_at }}</span>
       <span>最后更新时间：{{ item.updated_at }}</span>
@@ -20,7 +21,7 @@
 <script lang="ts" setup>
 import { NDivider, NCard } from 'naive-ui'
 import { onBeforeMount, ref } from 'vue'
-import { GetAllArticles } from '@/utils/api/index'
+import { GetAllArticles, GetArticle } from '@/utils/api/index'
 interface articleInfo {
   id: number
   created_at: string
@@ -34,19 +35,24 @@ interface articleInfo {
 }
 
 let articles = ref<articleInfo[]>([])
+const getContent = async (id: number) => {
+  let res = await GetArticle(id)
+  if (res.data.code === '00000') {
+    let articleContent = res.data.data
+    console.log(articleContent)
+  }
+}
 onBeforeMount(async () => {
   let res = await GetAllArticles({ pageCount: 1, pageSize: 20 })
   if (res.data.code === '00000') {
     let articleInfos = res.data.data
     articles.value = articleInfos
-    console.log(articles)
   }
 })
 </script>
 <style scoped lang="less">
 .recommend {
   width: 900px;
-  height: 900px;
   padding-left: 10px;
   padding-top: 10px;
   background-color: @back-color;
@@ -58,7 +64,8 @@ onBeforeMount(async () => {
   }
   .n_card {
     width: 85%;
-    margin-top: 5px;
+    margin-top: 7px;
+    cursor: pointer;
     background: @card-back-color;
   }
 }

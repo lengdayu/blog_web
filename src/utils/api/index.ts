@@ -14,7 +14,14 @@ type queryParams = {
 }
 
 //文章查询接口（全量）
-export const GetAllArticles = async (params: queryParams) => {
+const GetAllArticles = async (params: queryParams) => {
   let result = await Instance.get('/article/list', { params })
   return result
 }
+
+const GetArticle = async (id: number) => {
+  let result = await Instance.post('/article/details', { id })
+  return result
+}
+
+export { GetAllArticles, GetArticle }
