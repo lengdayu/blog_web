@@ -14,7 +14,7 @@ const splitMessage = (message: string): string => {
       finallMessage += secItem
     })
     //在拼接每个字
-    if (item[0] !== '，' && item[0] !== '。') {
+    if (item[0] !== '，' && item[0] !== '。' && item[0] !== '！') {
       finallMessage += totalMessageArray[index]
     }
   })

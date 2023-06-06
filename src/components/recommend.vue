@@ -19,9 +19,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { NDivider, NCard } from 'naive-ui'
 import { onBeforeMount, ref } from 'vue'
-import { GetAllArticles, GetArticle } from '@/utils/api/index'
+import { useRouter } from 'vue-router'
+import { NDivider, NCard } from 'naive-ui'
+import { GetAllArticles } from '@/utils/api/index'
+
+const router = useRouter()
 interface articleInfo {
   id: number
   created_at: string
@@ -36,11 +39,7 @@ interface articleInfo {
 
 let articles = ref<articleInfo[]>([])
 const getContent = async (id: number) => {
-  let res = await GetArticle(id)
-  if (res.data.code === '00000') {
-    let articleContent = res.data.data
-    console.log(articleContent)
-  }
+  router.push({ name: 'article', params: { id } })
 }
 onBeforeMount(async () => {
   let res = await GetAllArticles({ pageCount: 1, pageSize: 20 })
@@ -53,8 +52,7 @@ onBeforeMount(async () => {
 <style scoped lang="less">
 .recommend {
   width: 900px;
-  padding-left: 10px;
-  padding-top: 10px;
+  padding: 10px 10px 20px 20px;
   background-color: @back-color;
   .recommend_title {
     :deep(.n-divider) {

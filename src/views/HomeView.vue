@@ -18,14 +18,18 @@ import Header from '@/components/header.vue'
 import Recommend from '@/components/recommend.vue'
 
 import { usePirntMessage } from '@/hooks/usePringMessage'
-const message = usePirntMessage(
-  '就让他带走你的那瞬间，成为我们的纪念，谁能发现我的世界，曾经有过你的脸。',
-  0.15
-)
+import '@/assets/css/common.css'
+
+const message = usePirntMessage('你要学会接受自己的平庸！', 0.1)
 </script>
 <style lang="less" scoped>
 .container {
   width: 100%;
+  background-image: url('@/assets/banner/1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #272727;
   .header {
     width: 100%;
   }
