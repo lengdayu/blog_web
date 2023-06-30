@@ -26,8 +26,8 @@ const message = usePirntMessage('你要学会接受自己的平庸！', 0.1)
 .container {
   width: 100%;
   background-image: url('@/assets/banner/1.jpg');
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-size: cover;
   background-attachment: fixed;
   background-color: #272727;
   .header {

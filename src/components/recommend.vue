@@ -51,7 +51,7 @@ onBeforeMount(async () => {
 </script>
 <style scoped lang="less">
 .recommend {
-  width: 900px;
+  width: 50%;
   padding: 10px 10px 20px 20px;
   background-color: @back-color;
   .recommend_title {
