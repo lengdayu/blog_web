@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <v-md-preview :text="articleContent"></v-md-preview>
+    <v-md-preview :text="articleContent" class="md_container"></v-md-preview>
   </div>
 </template>
 
@@ -23,8 +23,13 @@ onBeforeMount(async () => {
 <style lang="less" scoped>
 .about {
   background-color: @markdown-preview-background-color;
-  :deep(.v-md-pre-wrapper) {
-    background-color: @markdown-preview-wrapper-color;
+  display: flex;
+  justify-content: center;
+  .md_container {
+    width: 60%;
+    :deep(.v-md-pre-wrapper) {
+      background-color: @markdown-preview-wrapper-color;
+    }
   }
 }
 </style>
